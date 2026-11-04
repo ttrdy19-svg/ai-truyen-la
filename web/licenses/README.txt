@@ -1,0 +1,1 @@
+Bundled fonts are Regular variants from the Duy TTD shared font collection, originally from https://github.com/google/fonts/tree/main/ofl . Each family retains its OFL copyright and license in this directory. Font files are unmodified.

@@ -1,0 +1,17 @@
+AI Du Lieu/
+AI Ban Chay/
+AI Kiem Thu/
+config.local.json
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.partial
+*.epub
+*.txt
+!web/licenses/*.txt
+*.bin
+*.local.json
+
+README.local.md

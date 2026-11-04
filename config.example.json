@@ -1,0 +1,5 @@
+{
+  "studioRoot": "<absolute-path-to-your-Duy-TTD-Studio>",
+  "dataRoot": "<absolute-path-to-your-private-library>",
+  "geminiModel": "gemini-3.6-flash"
+}

@@ -1,0 +1,29 @@
+{
+    "appId":  "local.chula.truyenla",
+    "productName":  "AI Truyen La",
+    "asar":  false,
+    "npmRebuild":  false,
+    "electronVersion":  "41.7.1",
+    "electronDist":  "D:/AI Duy TTD Studio/node_modules/electron/dist",
+    "directories":  {
+                        "output":  "AI Ban Chay"
+                    },
+    "files":  [
+                  "package.json",
+                  "main.cjs",
+                  "core.mjs",
+                  "store.mjs",
+                  "gemini.mjs",
+                  "cover.cjs",
+                  "archive-render.cjs",
+                  "server.mjs",
+                  "index.html",
+                  "app.js",
+                  "style.css",
+                  "config.local.json",
+                  "fonts.mjs"
+              ],
+    "win":  {
+                "signAndEditExecutable":  false
+            }
+}

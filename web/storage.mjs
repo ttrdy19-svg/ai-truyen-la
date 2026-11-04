@@ -1,0 +1,7 @@
+let opening;
+export function database(){return opening||=(new Promise((resolve,reject)=>{const r=indexedDB.open('truyen-la-offline',1);r.onupgradeneeded=()=>{r.result.createObjectStore('books',{keyPath:'id'});r.result.createObjectStore('catalog',{keyPath:'id'});};r.onsuccess=()=>resolve(r.result);r.onerror=()=>{opening=null;reject(Error('Không mở được kho. Kiểm tra quyền lưu dữ liệu của trình duyệt.'));};r.onblocked=()=>reject(Error('Đóng tab Truyện Lạ khác rồi thử lại.'));}));}
+export async function putBooks(books){const db=await database();await new Promise((resolve,reject)=>{const tx=db.transaction(['books','catalog'],'readwrite');for(const b of books){tx.objectStore('books').put(b);tx.objectStore('catalog').put({id:b.id,title:b.title,author:b.author,count:b.chapters.length,cover:b.cover||'',addedAt:b.addedAt});}tx.oncomplete=resolve;tx.onerror=tx.onabort=()=>reject(Error(tx.error?.name==='QuotaExceededError'?'Máy không đủ dung lượng lưu truyện. Hãy giải phóng bộ nhớ rồi nhập lại.':'Chưa lưu được truyện. File gốc vẫn còn nguyên.'));});}
+async function read(store,key){const db=await database();return new Promise((resolve,reject)=>{const tx=db.transaction(store),r=key===undefined?tx.objectStore(store).getAll():tx.objectStore(store).get(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(Error('Không đọc được kho trên máy.'));});}
+export const catalog=()=>read('catalog');
+export const getBook=id=>read('books',id);
+export const allBooks=()=>read('books');
